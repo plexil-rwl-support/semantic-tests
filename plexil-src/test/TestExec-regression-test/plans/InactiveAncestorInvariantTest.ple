@@ -1,0 +1,12 @@
+InactiveAncestorInvariantTest:
+Concurrence
+{
+  // Cause a failure when TheParent executes
+  InvariantCondition !NodeExecuting(TheParent);
+
+ TheParent:
+  {
+  TheChild:
+    {}
+  } 
+}

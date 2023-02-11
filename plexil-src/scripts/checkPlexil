@@ -1,0 +1,128 @@
+#!/bin/sh
+
+# Copyright (c) 2006-2020, Universities Space Research Association (USRA).
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Universities Space Research Association nor the
+#       names of its contributors may be used to endorse or promote products
+#       derived from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY USRA ``AS IS'' AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL USRA BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+# OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+# TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+# USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# -d enable debug mode
+
+# Runs global-decl-checker.jar on a given input .plx file.
+
+# If the input is appropriate, it will return a following value.
+#   0 Passed (Warnings Only)
+#   1 Checking Error(s) Found
+#   2 Unhandled Exception
+
+usage()
+{
+    echo "Usage: $0 [-d] file.plx"
+}
+
+# Check for -d (debug) option
+if [ '-d' = "$1" ]
+then
+    debug="$1"
+    shift
+fi
+
+# Check that a file name is provided
+if [ -z "$1" ]
+then
+    echo "Error: no file name supplied" >&2
+    usage
+    exit 2
+fi
+
+# Make sure a true input file is added as argument
+if [ ! -f "$1" ]
+then
+    echo "Error: Cannot find file $1" >&2
+    exit 2
+fi
+
+if [ -z "$PLEXIL_HOME" ]
+then
+    echo 'Error: Please set environment variable PLEXIL_HOME' >&2
+    echo "to the full pathname of your 'plexil' or 'trunk' directory." >&2
+    echo 'Exiting.' >&2
+    exit 2
+fi
+
+if [ -n "$JAVA_HOME" ]
+then
+    JAVA="$JAVA_HOME"/bin/java
+    if [ ! -e "$JAVA" ]
+    then
+        echo "Error: no Java runtime found at $JAVA_HOME" >&2
+        echo 'Please set JAVA_HOME to an existing Java runtime,' >&2
+        echo 'or install a Java runtime environment.' >&2
+        exit 2
+    fi
+else
+    JAVA="$(command -v java)"
+    if [ -z "$JAVA" ]
+    then
+        echo "Error: no Java runtime in path $PATH" >&2
+        echo 'Either set PATH to include a Java runtime,' >&2
+        echo 'set JAVA_HOME to a Java runtime,' >&2
+        echo 'or install a Java runtime environment.' >&2
+        exit 2
+    fi
+fi
+
+# Make sure checker jar file exists
+prog="$PLEXIL_HOME"/checker/global-decl-checker.jar
+if [ ! -f "$prog" ]
+then
+  echo "Cannot find file $prog. To build it:" >&2
+  echo "  cd $PLEXIL_HOME/checker" >&2
+  echo '  ant jar' >&2
+  echo 'If JAR is located elsewhere, please update the location in the script.' >&2
+  exit 2
+fi
+
+# First validate against Core Plexil schema
+if [ -z "$(command -v xmllint)" ]
+then
+    echo "Warning: program 'xmllint' not found. Skipping validation against schema." >&2
+elif ! xmllint --noout --schema "$PLEXIL_HOME"/schema/core-plexil.xsd "$1"
+then
+    echo "Validation of $1 against PLEXIL schema failed." >&2
+    exit 1
+fi
+
+# Run and check result of the program
+"$JAVA" -jar "$prog" "$debug" "$1"
+result=$?
+if [ $result -eq 0 ]
+then
+  echo Passed
+elif [ $result -eq 1 ]
+then
+  echo Failed: Result = $result
+else
+  echo Error: Result = $result
+fi
+
+exit $result

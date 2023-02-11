@@ -1,0 +1,9 @@
+Command C (String);
+
+Root: {
+  String s;
+  s = "foo";
+  C (s);  
+  s = "bar";
+  C (s);
+}

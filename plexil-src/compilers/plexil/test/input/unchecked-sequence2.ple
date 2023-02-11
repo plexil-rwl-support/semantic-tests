@@ -1,0 +1,8 @@
+Command C (String);
+
+Root: UncheckedSequence
+{
+  String s;
+  s = "foo";
+  C (s);  
+}

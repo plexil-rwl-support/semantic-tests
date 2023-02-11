@@ -1,0 +1,8 @@
+*.a
+*.dylib
+*.la
+*.sa.*
+*.so
+*.so.*
+.force
+cmake

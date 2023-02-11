@@ -1,0 +1,8 @@
+Command C (String);
+
+Root: CheckedSequence
+{
+  String s;
+  s = "foo";
+  C (s);  
+}

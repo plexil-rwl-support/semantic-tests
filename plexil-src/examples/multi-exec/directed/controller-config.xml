@@ -1,0 +1,10 @@
+<Interfaces>
+ <Adapter AdapterType="OSNativeTime"/>
+ <Adapter AdapterType="IpcAdapter"
+          TaskName="controller"
+          Server="localhost"
+          AllowDuplicateMessages="true">
+  <DefaultCommandAdapter/>
+  <LookupNames>front_engine:Torque, rear_engine:Torque, Torque</LookupNames>
+ </Adapter>
+</Interfaces>

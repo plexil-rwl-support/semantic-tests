@@ -1,0 +1,12 @@
+This directory contains an example of starvation (low priority commands
+get run instead of a high priority one) and an equivelant plan which
+does not exhibit starvation (StarvationFixedSequence.ple).
+
+This is significant because the current resource arbiter implementation
+can lead to high priority (CalculateLanding) commands to never execute
+in favor of low priority ones (TakePicture, etc.).
+
+The convenience scripts run-starvation and
+run-starvation-fixed-sequence run the PLEXIL Exec as a simulator,
+using the Simulator.ple plan, and either Starvation.ple or
+StarvationFixedSequence.ple as the resource acquirer.
