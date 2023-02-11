@@ -1,8 +1,0 @@
-
-// command3
-
-script {
-  command     get_string () = "fred" : string;
-  command-ack get_string () = "COMMAND_SUCCESS" : string;
-}
-

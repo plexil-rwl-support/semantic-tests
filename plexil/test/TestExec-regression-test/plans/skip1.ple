@@ -1,9 +1,0 @@
-skip1:
-Concurrence
-  {
-  SkipMe:
-    {
-      SkipCondition true;
-      PostCondition NodeSkipped(Self);
-    }
-  }

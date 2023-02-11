@@ -1,8 +1,0 @@
-array8:
-{
-  Comment "Tests arrays as update values";
-
-  Real src[2] = #(5.0 6.0);
-
-  Update val = src;
-}

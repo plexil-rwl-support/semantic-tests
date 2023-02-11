@@ -1,6 +1,0 @@
-#:Node:transition
-#:Node:outcome
-:ResourceArbiterInterface:arbitrate
-:ResourceArbiterInterface:optimal
-:ResourceArbiterInterface:partition
-:ResourceArbiterInterface:release

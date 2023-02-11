@@ -1,8 +1,0 @@
-Command pprint(...);
-
-AnyArgs_empty_test:
-{
-  pprint();
-  // This is not currently legal syntax.
-  //pprint;
-}

@@ -1,7 +1,0 @@
-lookup2:
-{
-  Integer x;
-  String state_name = "foo";
-
-  x = LookupNow((state_name));
-}

@@ -1,5 +1,0 @@
-UncheckedSequence {
-  String s;
-  s = "foo";
-  s = "bar";
-}

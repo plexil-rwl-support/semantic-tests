@@ -1,5 +1,0 @@
-test/expr_module_tests-TrivialListener.o: test/TrivialListener.cc \
- /usr/include/stdc-predef.h test/TrivialListener.hh ExpressionListener.hh
-/usr/include/stdc-predef.h:
-test/TrivialListener.hh:
-ExpressionListener.hh:

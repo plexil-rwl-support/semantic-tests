@@ -1,4 +1,0 @@
-libPlexilAppFramework_la-DarwinTimeAdapter.lo: DarwinTimeAdapter.cc \
- /usr/include/stdc-predef.h ../plexil-config.h
-/usr/include/stdc-predef.h:
-../plexil-config.h:

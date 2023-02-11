@@ -1,8 +1,0 @@
-Boolean Lookup continue;
-Command foo;
-
-repeat7:
-{
-  RepeatCondition LookupOnChange(continue);
-  foo();
-}

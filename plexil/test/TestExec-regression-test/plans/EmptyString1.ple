@@ -1,4 +1,0 @@
-EmptyString1:
-{
-    String foo = "";
-}

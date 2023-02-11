@@ -1,9 +1,0 @@
-Command C (String);
-
-Root: CheckedSequence {
-  String s;
-  s = "foo";
-  C (s);  
-  s = "bar";
-  C (s);
-}

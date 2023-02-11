@@ -1,6 +1,0 @@
-../expr/test/test_intfc_module_tests-TrivialListener.o: \
- ../expr/test/TrivialListener.cc /usr/include/stdc-predef.h \
- ../expr/test/TrivialListener.hh ../expr/ExpressionListener.hh
-/usr/include/stdc-predef.h:
-../expr/test/TrivialListener.hh:
-../expr/ExpressionListener.hh:

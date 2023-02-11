@@ -1,7 +1,0 @@
-<PLEXILScript>
-  <Script>
-    <CommandAck name="foot_in_mouth" type="string">
-      <Result>COMMAND_SUCCESS</Result>
-    </CommandAck>
-  </Script>
-</PLEXILScript>
