@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
     libxmu-dev
 
 
-COPY ./plexil $PLEXIL_HOME
+COPY ./plexil-src $PLEXIL_HOME
 
 RUN echo "export PLEXIL_HOME=$PLEXIL_HOME" >> /root/.bashrc
 RUN echo "export PATH=$PLEXIL_HOME/scripts:$PATH" >> /root/.bashrc
