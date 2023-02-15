@@ -1,0 +1,15 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: plexil-image
+
+    steps:
+      - run: plexil
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
