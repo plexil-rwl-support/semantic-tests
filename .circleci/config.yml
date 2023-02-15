@@ -7,6 +7,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Docker
+          command: |
+            curl -fsSL https://get.docker.com -o get-docker.sh
+            sh get-docker.sh
+      - run:
           name: Build Docker image
           command: |
             docker build -t plexil-image .
