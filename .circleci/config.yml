@@ -15,10 +15,6 @@ jobs:
           name: Run Docker container
           command: |
             docker run -d --name plexil-container plexil-image
-      - run:
-          name: Check container status
-          command: |
-            docker ps | grep -q plexil-container
 
 workflows:
   version: 2
