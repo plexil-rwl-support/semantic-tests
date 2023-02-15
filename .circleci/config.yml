@@ -5,12 +5,8 @@ jobs:
     docker:
       - image: circleci/buildpack-deps:stretch
     steps:
+      - setup_remote_docker
       - checkout
-      - run:
-          name: Install Docker
-          command: |
-            curl -fsSL https://get.docker.com -o get-docker.sh
-            sh get-docker.sh
       - run:
           name: Build Docker image
           command: |
