@@ -5,8 +5,7 @@ jobs:
     docker:
       - image: semantictests/semantictests:plexil-image
     steps:
-      - setup_remote_docker:
-          version: 20.10.8
+      - setup_remote_docker
       - checkout
       - run:
           name: Run Docker container
