@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Run Docker container
           command: |
-            docker run -v $PWD:/semantic-tests -d --name plexil-container semantictests/semantictests:plexil-image tail -f /dev/null
+            docker run -v ~/project:/semantic-tests -d --name plexil-container semantictests/semantictests:plexil-image tail -f /dev/null
       - run:
           name: Run commands inside container
           command: |
