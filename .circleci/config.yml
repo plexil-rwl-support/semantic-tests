@@ -15,7 +15,7 @@ jobs:
           name: Run commands inside container
           command: |
             docker exec plexil-container ./plexil/test/TestExec-regression-test/run-tests
-            docker exec plexil-container ./semantic-tests/echo
+            docker exec plexil-container ./semantic-tests/echo.sh
 
 workflows:
   version: 2
