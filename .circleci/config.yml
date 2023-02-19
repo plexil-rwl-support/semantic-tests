@@ -9,8 +9,8 @@ jobs:
           name: Execute tests
           command: |
             ls
-          - store_artifacts:
-              path: output.txt
+      - store_artifacts:
+          path: output.txt
 
 workflows:
   version: 2
