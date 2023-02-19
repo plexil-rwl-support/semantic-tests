@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker build -t plexil-image .
+            docker pull semantictests/semantictest:plexil-image
       - run:
           name: Run Docker container
           command: |
