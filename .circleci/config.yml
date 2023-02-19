@@ -8,10 +8,6 @@ jobs:
       - setup_remote_docker
       - checkout
       - run:
-          name: Run Docker container
-          command: |
-            docker run -d --name plexil-container plexil-image
-      - run:
           name: Execute tests
           command: |
             ./plexil/test/TestExec-regression-test/run-tests
