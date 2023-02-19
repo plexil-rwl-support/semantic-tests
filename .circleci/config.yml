@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Execute tests
           command: |
-            ./echo
+            cat echo.sh
             cd ..
             ./plexil/test/TestExec-regression-test/run-tests
 
