@@ -15,6 +15,10 @@ jobs:
           name: Run Docker container
           command: |
             docker run -d --name plexil-container plexil-image
+      - run:
+          name: Execute tests
+          command: |
+            ./run-tests
 
 workflows:
   version: 2
