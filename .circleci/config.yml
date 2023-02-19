@@ -10,9 +10,9 @@ jobs:
       - run:
           name: Execute tests
           command: |
+            ls
             cd ..
             ./plexil/test/TestExec-regression-test/run-tests
-            ls
 
 workflows:
   version: 2
