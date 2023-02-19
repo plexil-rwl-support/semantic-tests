@@ -10,12 +10,12 @@ jobs:
       - run:
           name: Run Docker container
           command: |
-            docker run -v $PWD/echo.sh:/semantic-tests -d --name plexil-container semantictests/semantictests:plexil-image tail -f /dev/null
+            docker run -v $PWD:/semantic-tests -d --name plexil-container semantictests/semantictests:plexil-image tail -f /dev/null
       - run:
           name: Run commands inside container
           command: |
             docker exec plexil-container ./plexil/test/TestExec-regression-test/run-tests
-            docker exec plexil-container ./semantic-tests/echo.sh
+            docker exec plexil-container sh -c "/semantic-tests"
 
 workflows:
   version: 2
