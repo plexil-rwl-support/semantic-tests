@@ -3,17 +3,20 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: semantictests/semantictests:plexil-image
-    working_directory: /
+      - image: circleci/buildpack-deps:stretch
     steps:
+      - setup_remote_docker
+      - checkout
       - run:
-          name: Copy folder to Docker container
-          command: docker cp README.md plexil-image:/
-      - run:
-          name: Execute tests
+          name: Build Docker image
           command: |
+            docker build -t plexil-image .
+      - run:
+          name: Run Docker container
+          command: |
+            docker run -it -d --name plexil-container plexil-image bash
             ./plexil/test/TestExec-regression-test/run-tests
-
+            cd /semantic-tests
 workflows:
   version: 2
   build:

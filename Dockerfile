@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
     libxmu-dev
 
 RUN git clone https://git.code.sf.net/p/plexil/git plexil
+RUN git clone https://github.com/plexil-rwl-support/semantic-tests.git semantic-tests
 
 RUN echo "export PLEXIL_HOME=$PLEXIL_HOME" >> /root/.bashrc
 RUN echo "export PATH=$PLEXIL_HOME/scripts:$PATH" >> /root/.bashrc
