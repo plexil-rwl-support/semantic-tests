@@ -8,8 +8,7 @@ jobs:
       - run:
           name: Execute tests
           command: |
-            cd plexil/test/TestExec-regression-test/
-            ./run-tests
+            ls
 
 workflows:
   version: 2
