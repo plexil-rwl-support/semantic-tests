@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Execute tests
           command: |
-            ./run-tests
+            plexil/test/TestExec-regression-test/.run-tests
 
 workflows:
   version: 2
