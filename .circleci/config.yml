@@ -4,12 +4,13 @@ jobs:
   build:
     docker:
       - image: semantictests/semantictests:plexil-image
-    working_directory: /
+    working_directory: /semantic-tests
     steps:
       - checkout
       - run:
           name: Execute tests
           command: |
+            cd ..
             ./plexil/test/TestExec-regression-test/run-tests
             ls
 
