@@ -4,7 +4,6 @@ jobs:
   build:
     docker:
       - image: circleci/buildpack-deps:stretch
-    working_directory: /
     steps:
       - setup_remote_docker
       - checkout
@@ -15,9 +14,13 @@ jobs:
       - run:
           name: Run Docker container
           command: |
-            docker run -it -d --name plexil-container plexil-image bash
-            ./plexil/test/TestExec-regression-test/run-tests
-            cd /semantic-tests
+            docker run -d --name plexil-container plexil-image tail -f /dev/null
+      - run:
+          name: Run commands inside container
+          command: |
+            docker exec plexil-container ./plexil/test/TestExec-regression-test/run-tests
+            docker exec plexil-container cd semantic-tests
+
 workflows:
   version: 2
   build:
