@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: semantictests/semantictests:plexil-image-broken6
+      - image: semantictests/semantictests:plexil-image-2
     working_directory: /semantic-tests
     steps:
       - checkout

@@ -33,11 +33,8 @@ RUN cd $PLEXIL_HOME/src && ./configure --prefix=$PLEXIL_HOME --enable-ipc --enab
 
 RUN cd $PLEXIL_HOME && grep -lR "#if defined(HAVE_CSTRING)" . | xargs sed -i s/"#if defined(HAVE_CSTRING)"/"#include <cstring>\n#if defined(HAVE_CSTRING)"/g
 
-RUN cd $PLEXIL_HOME && sed -i '13s/.*/    a1[0] == 1 \&\&/' test/TestExec-regression-test/plans/array2.ple
-
 COPY check-regression-errors.sh plexil/test/TestExec-regression-test/
 
 RUN cd $PLEXIL_HOME && printf "\ncheck-regression-errors.sh\n" >>test/TestExec-regression-test/run-tests && chmod +x test/TestExec-regression-test/check-regression-errors.sh
 RUN cd $PLEXIL_HOME && make
 
-RUN ["/bin/bash", "-c", "cd $PLEXIL_HOME && ./scripts/plexilc test/TestExec-regression-test/plans/array2.ple"]
