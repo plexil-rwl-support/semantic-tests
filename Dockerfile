@@ -36,3 +36,5 @@ RUN cd $PLEXIL_HOME && grep -lR "#if defined(HAVE_CSTRING)" . | xargs sed -i s/"
 RUN cd $PLEXIL_HOME && sed -i '13s/.*/    a1[0] == 1 \&\&/' test/TestExec-regression-test/plans/array2.ple
 
 RUN cd $PLEXIL_HOME && make
+
+RUN ["/bin/bash", "-c", "cd $PLEXIL_HOME && ./scripts/plexilc test/TestExec-regression-test/plans/array2.ple"]
