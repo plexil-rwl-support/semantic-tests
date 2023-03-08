@@ -36,5 +36,6 @@ RUN cd $PLEXIL_HOME && grep -lR "#if defined(HAVE_CSTRING)" . | xargs sed -i s/"
 COPY check-regression-errors.sh plexil/test/TestExec-regression-test/
 
 RUN cd $PLEXIL_HOME && printf "\ncheck-regression-errors.sh\n" >>test/TestExec-regression-test/run-tests && chmod +x test/TestExec-regression-test/check-regression-errors.sh
+RUN cd $PLEXIL_HOME/test/TestExec-regression-test && sed -i -e "s/\r$//" check-regression-errors.sh
 RUN cd $PLEXIL_HOME && make
 
